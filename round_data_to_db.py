@@ -9,7 +9,7 @@ data=fh.read()
 js=json.loads(data)
 
 for item in js:
-    '''if 'allplayers' in item.keys():
+    if 'allplayers' in item.keys():
         new_dict=item['allplayers']
         for k,v in new_dict.items():
             
@@ -83,7 +83,7 @@ for item in js:
             cur.execute('SELECT id FROM Players WHERE steam_id=?', (k, )) #selecting the player_id matching the steam_id which is k of the item in new_dict
             player_id=cur.fetchone()[0] #fetching the id found using the above line
             cur.execute('INSERT INTO Matches (match_id, round_id, player_id, posX, posY, posZ, dirX, dirY, dirZ, health, armour, helmet, flashed, burning, kills, assists, deaths, timestamp, w_0_id, w_0_state, w_1_id, w_1_state, w_2_id, w_2_state, w_3_id, w_3_state, w_4_id, w_4_state, w_5_id, w_5_state) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', (1, item['map']['round'], player_id, pos_x, pos_y, pos_z, dir_x, dir_y, dir_z, health, armor, helmet, flashed, burning, kills, assists, deaths, item['provider']['timestamp'], weapon_0_id, weapon_0_state, weapon_1_id, weapon_1_state, weapon_2_id, weapon_2_state, weapon_3_id, weapon_3_state, weapon_4_id, weapon_4_state, weapon_5_id, weapon_5_state))
-           '''
+           
 
     #extracting grendes to Grenades
     if 'grenades' in item.keys():
